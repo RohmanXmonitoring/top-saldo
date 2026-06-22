@@ -1,8 +1,10 @@
+// components/topup/TopUpForm.tsx
 'use client';
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import toast from 'react-hot-toast';
 import { TopUpFormData } from '@/types/transaction.types';
 import Button from '@/components/ui/Button';
 import Input from '@/components/ui/Input';
@@ -39,8 +41,16 @@ export default function TopUpForm({ onSubmit, loading = false }: TopUpFormProps)
   
   const quickAmounts = [10000, 20000, 50000, 100000, 200000, 500000];
   
+  const handleFormSubmit = (data: TopUpFormData) => {
+    if (!data.nominal || data.nominal < 10000) {
+      toast.error('Nominal minimal Rp 10.000');
+      return;
+    }
+    onSubmit(data);
+  };
+  
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+    <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-6">
       <div>
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
           Nominal Top Up
@@ -110,4 +120,4 @@ export default function TopUpForm({ onSubmit, loading = false }: TopUpFormProps)
       </Button>
     </form>
   );
-      }
+              }
