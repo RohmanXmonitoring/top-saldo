@@ -1,8 +1,11 @@
+// store/authStore.ts
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { User } from '@/types/user.types';
 import { auth } from '@/lib/firebase/client';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '@/lib/firebase/client';
 
 interface AuthState {
   user: User | null;
@@ -33,9 +36,13 @@ export const useAuthStore = create<AuthState>()(
         onAuthStateChanged(auth, async (firebaseUser) => {
           if (firebaseUser) {
             try {
-              const response = await fetch(`/api/users/${firebaseUser.uid}`);
-              const userData = await response.json();
-              setUser(userData);
+              const userDoc = await getDoc(doc(db, 'users', firebaseUser.uid));
+              if (userDoc.exists()) {
+                const userData = userDoc.data() as User;
+                setUser(userData);
+              } else {
+                setUser(null);
+              }
             } catch (error) {
               console.error('Error fetching user data:', error);
               setUser(null);
