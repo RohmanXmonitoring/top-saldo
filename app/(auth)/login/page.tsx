@@ -51,7 +51,7 @@ export default function LoginPage() {
   
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 py-12 px-4 sm:px-6 lg:px-8">
-      <Card className="w-full max-w-md">
+      <Card className="w-full max-w-md p-6 md:p-8">
         <div className="text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white">
             Top Saldo
@@ -114,4 +114,4 @@ export default function LoginPage() {
       </Card>
     </div>
   );
-      }
+}
