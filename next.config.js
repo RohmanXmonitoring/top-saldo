@@ -1,4 +1,3 @@
-// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
@@ -6,7 +5,6 @@ const nextConfig = {
   },
   experimental: {
     serverActions: {
-      // Ubah dari boolean ke object
       allowedOrigins: ['localhost:3000', 'top-saldo.vercel.app'],
     },
   },
