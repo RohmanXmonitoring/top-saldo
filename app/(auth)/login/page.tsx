@@ -1,6 +1,7 @@
+// app/(auth)/login/page.tsx
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
@@ -30,39 +31,17 @@ export default function LoginPage() {
     register,
     handleSubmit,
     formState: { errors },
-    setValue,
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
   });
-  
-  useEffect(() => {
-    // Check for remembered email
-    const rememberedEmail = localStorage.getItem('rememberedEmail');
-    if (rememberedEmail) {
-      setValue('email', rememberedEmail);
-      setValue('rememberMe', true);
-    }
-  }, [setValue]);
   
   const onSubmit = async (data: LoginFormData) => {
     setLoading(true);
     try {
       const user = await AuthService.login(data);
       setUser(user);
-      
-      if (data.rememberMe) {
-        localStorage.setItem('rememberedEmail', data.email);
-      } else {
-        localStorage.removeItem('rememberedEmail');
-      }
-      
       toast.success('Login berhasil!');
-      
-      if (user.role === 'admin') {
-        router.push('/admin/dashboard');
-      } else {
-        router.push('/dashboard');
-      }
+      router.push(user.role === 'admin' ? '/admin/dashboard' : '/dashboard');
     } catch (error: any) {
       toast.error(error.message || 'Login gagal');
     } finally {
@@ -135,4 +114,4 @@ export default function LoginPage() {
       </Card>
     </div>
   );
-              }
+      }
