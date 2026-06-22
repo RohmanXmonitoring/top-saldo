@@ -1,0 +1,43 @@
+{
+  "name": "top-saldo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "vercel-build": "next build"
+  },
+  "dependencies": {
+    "next": "15.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.3.3",
+    "@types/node": "^20.10.0",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "tailwindcss": "^3.4.0",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "firebase": "^11.0.0",
+    "axios": "^1.7.0",
+    "react-hook-form": "^7.48.2",
+    "zod": "^3.22.4",
+    "@hookform/resolvers": "^3.3.4",
+    "zustand": "^4.4.7",
+    "react-hot-toast": "^2.4.1",
+    "date-fns": "^3.0.0",
+    "react-icons": "^4.12.0",
+    "next-themes": "^0.3.0",
+    "recharts": "^2.10.3",
+    "uuid": "^9.0.1",
+    "@types/uuid": "^9.0.7",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/uuid": "^9.0.7"
+  }
+}
