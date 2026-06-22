@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "vercel-build": "next build"
+    "postinstall": "npm audit fix || true"
   },
   "dependencies": {
     "next": "15.1.0",
