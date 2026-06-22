@@ -1,3 +1,4 @@
+// components/topup/PaymentModal.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -49,7 +50,13 @@ export default function PaymentModal({ paymentData, onClose, onSuccess }: Paymen
         onSuccess();
         onClose();
       } else {
-        toast.info('Pembayaran masih pending, silakan coba lagi');
+        toast('Pembayaran masih pending, silakan coba lagi', {
+          icon: 'ℹ️',
+          style: {
+            background: '#f59e0b',
+            color: '#fff',
+          },
+        });
       }
     } catch (error) {
       toast.error('Gagal memeriksa status');
