@@ -1,3 +1,4 @@
+// types/user.types.ts
 export interface User {
   uid: string;
   nama: string;
@@ -23,8 +24,4 @@ export interface RegisterFormData {
   email: string;
   password: string;
   confirmPassword: string;
-}
-
-export interface ForgotPasswordFormData {
-  email: string;
 }
