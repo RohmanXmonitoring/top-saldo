@@ -1,3 +1,4 @@
+// services/auth.service.ts
 import { 
   createUserWithEmailAndPassword, 
   signInWithEmailAndPassword,
@@ -5,7 +6,6 @@ import {
   sendPasswordResetEmail,
   updateProfile,
   UserCredential,
-  User as FirebaseUser
 } from 'firebase/auth';
 import { auth, db } from '@/lib/firebase/client';
 import { doc, setDoc, getDoc, serverTimestamp } from 'firebase/firestore';
@@ -121,4 +121,4 @@ export class AuthService {
     };
     return messages[code] || 'Terjadi kesalahan, silakan coba lagi';
   }
-                                 }
+}
